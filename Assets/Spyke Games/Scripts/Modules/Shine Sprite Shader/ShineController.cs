@@ -17,6 +17,7 @@ public class ShineController : MonoBehaviour
     private SpriteRenderer m_SpriteRenderer;
     private MaterialPropertyBlock m_MaterialPropertyBlock;
     
+    private static readonly int MainTex = Shader.PropertyToID("_MainTex");
     private static readonly int Shine = Shader.PropertyToID("_Shine");
     private static readonly int ShineColor = Shader.PropertyToID("_ShineColor");
     private static readonly int ShineThickness = Shader.PropertyToID("_ShineThickness");
@@ -37,7 +38,7 @@ public class ShineController : MonoBehaviour
         if (m_MaterialPropertyBlock == null) 
             m_MaterialPropertyBlock = new MaterialPropertyBlock();
 
-        m_MaterialPropertyBlock.SetTexture("_MainTex", m_SpriteRenderer.sprite.texture);
+        m_MaterialPropertyBlock.SetTexture(MainTex, m_SpriteRenderer.sprite.texture);
         m_MaterialPropertyBlock.SetFloat(Shine, Active ? 1 : 0);
         m_MaterialPropertyBlock.SetColor(ShineColor, Color);
         m_MaterialPropertyBlock.SetFloat(ShineThickness, Thickness);
@@ -50,7 +51,7 @@ public class ShineController : MonoBehaviour
 #if UNITY_EDITOR
     private const string SHADER_NAME = "Custom/ShineUnlitSprite";
     private Shader m_Shader;
-    
+
     private void OnValidate()
     {
         if (Application.isPlaying) return;

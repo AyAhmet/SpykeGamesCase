@@ -164,9 +164,9 @@ public class SlotMachineColumnController : MonoBehaviour
     private IEnumerator MoveAndStopAtTargetImmediate(int targetSymbolValue, Vector3 velocity)
     {
         var localPos = m_Transform.localPosition;
-        var targetSymbolLocalPosY = m_SymbolsIndexed[targetSymbolValue] * SymbolGapVertical;
+        var targetSymbolLocalPosY = GetSymbolLocalY(targetSymbolValue);
         var finalLocalPosition = new Vector3(localPos.x, -targetSymbolLocalPosY, localPos.z);
-        var yDistance2Target = m_ColumnRepeatsSymbolsEvery - Mathf.Abs(targetSymbolLocalPosY - localPos.y);
+        var yDistance2Target = GetTravelDistanceToSymbol(targetSymbolValue, localPos);
 
         while (yDistance2Target > 0)
         {
