@@ -9,7 +9,7 @@ public class DependencyManager : MonoBehaviour
     [SerializeField] private SpinButtonController m_SpinButtonController;
 
     [Header("Slot Machine Controller Dependencies")]
-    [SerializeField] private OutputsAndOddsTable m_SlotMachineOutputsAndOddsTable;
+    [SerializeField] private SlotMachineOutputsAndOddsTable m_SlotMachineOutputsAndOddsTable;
 
     [Header("Slot Machine Column Controller Dependencies")] 
     [SerializeField] private List<Sprite> m_SharpSprites;

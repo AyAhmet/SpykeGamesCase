@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Slot Machine Outputs and Odds Table 000", menuName = "Scriptable Objects/Slot Machine Outputs and Odds Table")]
-public class SlotMachineOutputsAndOddsTable : OutputsAndOddsTable
+public class SlotMachineOutputsAndOddsTable : ScriptableObject, IOutputsAndOdds
 {
     [SerializeField] private SlotMachineRow[] Table;
 
@@ -22,7 +22,7 @@ public class SlotMachineOutputsAndOddsTable : OutputsAndOddsTable
         }
     }
 
-    public override Dictionary<int, int> GetOutputsAndOddsAsDictionary()
+    public Dictionary<int, int> GetOutputsAndOddsAsDictionary()
     {
         if (m_CachedOutputsAndOddsDictionary == null)
             CacheFields();
@@ -30,7 +30,7 @@ public class SlotMachineOutputsAndOddsTable : OutputsAndOddsTable
         return m_CachedOutputsAndOddsDictionary;
     }
 
-    public override int GetTotalOutputCount()
+    public int GetTotalOutputCount()
     {
         if (m_CachedOutputsAndOddsDictionary == null)
             CacheFields();
@@ -38,12 +38,12 @@ public class SlotMachineOutputsAndOddsTable : OutputsAndOddsTable
         return m_TotalOutputCount;
     }
 
-    public override int[] GetSymbolSequenceAtRowIndex(int rowIndex)
+    public int[] GetSymbolSequenceAtRowIndex(int rowIndex)
     {
         return Table[rowIndex].OrderAsRaw;
     }
 
-    public override int GetCoinRewardAtRowIndex(int rowIndex)
+    public int GetCoinRewardAtRowIndex(int rowIndex)
     {
         return Table[rowIndex].CoinReward;
     }
