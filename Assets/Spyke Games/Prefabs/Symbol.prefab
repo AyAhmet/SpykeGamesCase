@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8484684191450217817}
   - component: {fileID: 8484684191450217818}
   m_Layer: 0
-  m_Name: A
+  m_Name: Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,19 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Symbol>k__BackingField: 0
-  SpriteRenderer: {fileID: 8484684191450217818}
-  SharpSprites:
-  - {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
-  - {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
-  - {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
-  - {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
-  - {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
-  BlurrySprites:
-  - {fileID: 21300000, guid: b265393d7b3ca4da89f12ee2c82f9b54, type: 3}
-  - {fileID: 21300000, guid: 3071df737cb734eb39f671cf55fabe2f, type: 3}
-  - {fileID: 21300000, guid: f427c0a51c04a4e9da21a7302c44869c, type: 3}
-  - {fileID: 21300000, guid: 76a7c209550fa446b9adc61823dea736, type: 3}
-  - {fileID: 21300000, guid: b6c75790725bb4db283584c3ad600576, type: 3}
+  m_SpriteRenderer: {fileID: 8484684191450217818}
 --- !u!212 &8484684191450217818
 SpriteRenderer:
   m_ObjectHideFlags: 0

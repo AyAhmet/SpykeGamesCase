@@ -1,19 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DependencyManager : MonoBehaviour
 {
     [Header("Controllers")]
-    [SerializeField] private SlotMachineController SlotMachineController;
-    [SerializeField] private CoinParticleController CoinParticleController;
-    [SerializeField] private SpinButtonController SpinButtonController;
-    
+    [SerializeField] private SlotMachineController m_SlotMachineController;
+    [SerializeField] private CoinParticleController m_CoinParticleController;
+    [SerializeField] private SpinButtonController m_SpinButtonController;
+
     [Header("Slot Machine Controller Dependencies")]
-    [SerializeField] private OutputsAndOddsTable SlotMachineOutputsAndOddsTable;
+    [SerializeField] private OutputsAndOddsTable m_SlotMachineOutputsAndOddsTable;
+
+    [Header("Slot Machine Column Controller Dependencies")] 
+    [SerializeField] private List<Sprite> m_SharpSprites;
+    [SerializeField] private List<Sprite> m_BlurrySprites;
 
     private IPersistData PersistentDataManager;
     
     
-    private void Awake()
+    private void Start()
     {
         CreateDependencies();
         InjectDependencies();
@@ -48,24 +53,25 @@ public class DependencyManager : MonoBehaviour
 
     private void InjectSlotMachineControllerDependencies()
     {
-        if (SlotMachineController == null) return;
+        if (m_SlotMachineController == null) return;
         
-        IOutputChance chanceOutputter = new PeriodicChanceDistributor(SlotMachineOutputsAndOddsTable);
+        IOutputChance chanceOutputter = new PeriodicChanceDistributor(m_SlotMachineOutputsAndOddsTable);
         ISlotMachine slotMachine = new SlotMachine(chanceOutputter, PersistentDataManager);
 
-        SlotMachineController.SetSlotMachine(slotMachine);
-        SlotMachineController.SetOutputsAndOddsTable(SlotMachineOutputsAndOddsTable);
-        SlotMachineController.SetSpinInitiator(SpinButtonController);
+        m_SlotMachineController.SetSlotMachine(slotMachine);
+        m_SlotMachineController.SetOutputsAndOddsTable(m_SlotMachineOutputsAndOddsTable);
+        m_SlotMachineController.SetSpinInitiator(m_SpinButtonController);
+        m_SlotMachineController.SetSymbolSprites(m_SharpSprites, m_BlurrySprites);
     }
 
     private void InjectCoinParticleControllerDependencies()
     {
-        CoinParticleController.Subscribe(SlotMachineController);
+        m_CoinParticleController.Subscribe(m_SlotMachineController);
     }
 
     private void InjectSpinButtonControllerDependencies()
     {
-        SpinButtonController.SetEventReceiver(SlotMachineController);
+        m_SpinButtonController.SetEventReceiver(m_SlotMachineController);
     }
 
     #endregion

@@ -7,7 +7,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class SlotMachineColumnController : MonoBehaviour
 {
-    [SerializeField] private List<SlotMachineSymbolController> Symbols;
+    [SerializeField] private List<SlotMachineSymbolController> m_SymbolControllers;
 
     public bool IsRolling { get; private set; }
     
@@ -35,9 +35,20 @@ public class SlotMachineColumnController : MonoBehaviour
         m_SpinDelayYield = new WaitForSeconds(m_Config.SpinDelay);
     }
 
+    public void SetSymbolControllerSprites(List<Sprite> sharpSprites, List<Sprite> blurrySprites)
+    {
+        foreach (var symbolController in m_SymbolControllers)
+        {
+            var value = (int) symbolController.Symbol;
+            var sharp = sharpSprites[value];
+            var blurry = blurrySprites[value];
+            symbolController.SetSharpAndBlurrySprites(sharp, blurry);
+        }
+    }
+
     private void CalculateDynamicValues()
     {
-        m_ColumnRepeatsSymbolsEvery = SymbolGapVertical * Symbols.Count;
+        m_ColumnRepeatsSymbolsEvery = SymbolGapVertical * m_SymbolControllers.Count;
     }
 
     private void CacheComponents()
@@ -49,30 +60,30 @@ public class SlotMachineColumnController : MonoBehaviour
     {
         m_SymbolsIndexed = new Dictionary<int, int>();
         
-        for (var i = 0; i < Symbols.Count; i++)
+        for (var i = 0; i < m_SymbolControllers.Count; i++)
         {
-            m_SymbolsIndexed.Add((int) Symbols[i].Symbol, i);
+            m_SymbolsIndexed.Add((int) m_SymbolControllers[i].Symbol, i);
         }
     }
 
     private void AddFillerSymbols()
     {
-        var topFiller = Symbols[0];
-        var topFiller2 = Symbols[1];
-        var bottomFiller = Symbols[^1];
+        var topFiller = m_SymbolControllers[0];
+        var topFiller2 = m_SymbolControllers[1];
+        var bottomFiller = m_SymbolControllers[^1];
 
         var pos = m_Transform.position;
-        var topFillerPosition = pos + new Vector3(0, Symbols.Count * SymbolGapVertical, 0);
-        var topFiller2Position = pos + new Vector3(0, (Symbols.Count + 1) * SymbolGapVertical, 0);
+        var topFillerPosition = pos + new Vector3(0, m_SymbolControllers.Count * SymbolGapVertical, 0);
+        var topFiller2Position = pos + new Vector3(0, (m_SymbolControllers.Count + 1) * SymbolGapVertical, 0);
         var bottomFillerPosition = pos + new Vector3(0, -SymbolGapVertical, 0);
         
         var topFillerGameObject = Instantiate(topFiller, topFillerPosition, Quaternion.identity, m_Transform);
         var topFiller2GameObject = Instantiate(topFiller2, topFiller2Position, Quaternion.identity, m_Transform);
         var bottomFillerGameObject = Instantiate(bottomFiller, bottomFillerPosition, Quaternion.identity, m_Transform);
         
-        Symbols.Add(topFillerGameObject);
-        Symbols.Add(topFiller2GameObject);
-        Symbols.Add(bottomFillerGameObject);
+        m_SymbolControllers.Add(topFillerGameObject);
+        m_SymbolControllers.Add(topFiller2GameObject);
+        m_SymbolControllers.Add(bottomFillerGameObject);
     }
 
     public void Spin(int targetSymbolValue, SpinStopAnimation stopAnimation)
@@ -112,17 +123,17 @@ public class SlotMachineColumnController : MonoBehaviour
 
     private void SetBlurrySprites()
     {
-        foreach (var symbol in Symbols)
+        foreach (var symbol in m_SymbolControllers)
         {
-            symbol.SetBlurrySprite();
+            symbol.EnableBlurrySprite();
         }
     }
 
     private void SetSharpSprites()
     {
-        foreach (var symbol in Symbols)
+        foreach (var symbol in m_SymbolControllers)
         {
-            symbol.SetSharpSprite();
+            symbol.EnableSharpSprite();
         }
     }
 

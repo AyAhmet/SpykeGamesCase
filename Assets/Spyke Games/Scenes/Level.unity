@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5bed483278249a4ada505b77c6ed53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Symbols:
+  m_SymbolControllers:
   - {fileID: 1962466474}
   - {fileID: 1453472252}
   - {fileID: 2042606137}
@@ -393,25 +393,9 @@ PrefabInstance:
       value: Bonus
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 76a7c209550fa446b9adc61823dea736, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -491,25 +475,9 @@ PrefabInstance:
       value: Bonus
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3071df737cb734eb39f671cf55fabe2f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -584,45 +552,9 @@ PrefabInstance:
       value: A
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f427c0a51c04a4e9da21a7302c44869c, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurySprites.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurySprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: b265393d7b3ca4da89f12ee2c82f9b54, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurySprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 3071df737cb734eb39f671cf55fabe2f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurySprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: f427c0a51c04a4e9da21a7302c44869c, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurySprites.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 76a7c209550fa446b9adc61823dea736, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurySprites.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: b6c75790725bb4db283584c3ad600576, type: 3}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1010,25 +942,9 @@ PrefabInstance:
       value: Wild
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f427c0a51c04a4e9da21a7302c44869c, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1103,25 +1019,9 @@ PrefabInstance:
       value: Bonus
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6c75790725bb4db283584c3ad600576, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1184,22 +1084,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackpot
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b265393d7b3ca4da89f12ee2c82f9b54, type: 3}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1274,25 +1158,9 @@ PrefabInstance:
       value: A
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b265393d7b3ca4da89f12ee2c82f9b54, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1356,25 +1224,9 @@ PrefabInstance:
       value: A
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3071df737cb734eb39f671cf55fabe2f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6411,25 +6263,9 @@ PrefabInstance:
       value: Seven
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6c75790725bb4db283584c3ad600576, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6646,7 +6482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5bed483278249a4ada505b77c6ed53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Symbols:
+  m_SymbolControllers:
   - {fileID: 1285966437}
   - {fileID: 243291374}
   - {fileID: 771265094}
@@ -6808,7 +6644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5bed483278249a4ada505b77c6ed53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Symbols:
+  m_SymbolControllers:
   - {fileID: 418900627}
   - {fileID: 370580731}
   - {fileID: 1818200217}
@@ -6886,25 +6722,9 @@ PrefabInstance:
       value: Seven
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 76a7c209550fa446b9adc61823dea736, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6978,14 +6798,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackpot
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6c75790725bb4db283584c3ad600576, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -7093,10 +6905,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251c04a6f3c4b49889436949ccd8250d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotMachineController: {fileID: 1514967301}
-  CoinParticleController: {fileID: 1790897634}
-  SpinButtonController: {fileID: 135916600}
-  SlotMachineOutputsAndOddsTable: {fileID: 11400000, guid: fdd16cf55d76c498d9b2394f44632643, type: 2}
+  m_SlotMachineController: {fileID: 1514967301}
+  m_CoinParticleController: {fileID: 1790897634}
+  m_SpinButtonController: {fileID: 135916600}
+  m_SlotMachineOutputsAndOddsTable: {fileID: 11400000, guid: fdd16cf55d76c498d9b2394f44632643, type: 2}
+  m_SharpSprites:
+  - {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
+  - {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
+  - {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
+  - {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
+  - {fileID: 21300000, guid: 734b62e40f73f4a5ca2faab09240753f, type: 3}
+  m_BlurrySprites:
+  - {fileID: 21300000, guid: b265393d7b3ca4da89f12ee2c82f9b54, type: 3}
+  - {fileID: 21300000, guid: 3071df737cb734eb39f671cf55fabe2f, type: 3}
+  - {fileID: 21300000, guid: f427c0a51c04a4e9da21a7302c44869c, type: 3}
+  - {fileID: 21300000, guid: 76a7c209550fa446b9adc61823dea736, type: 3}
+  - {fileID: 21300000, guid: b6c75790725bb4db283584c3ad600576, type: 3}
 --- !u!4 &2022675011
 Transform:
   m_ObjectHideFlags: 0
@@ -7124,25 +6948,9 @@ PrefabInstance:
       value: Wild
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f427c0a51c04a4e9da21a7302c44869c, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7212,25 +7020,9 @@ PrefabInstance:
       value: Wild
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b265393d7b3ca4da89f12ee2c82f9b54, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7305,25 +7097,9 @@ PrefabInstance:
       value: Seven
       objectReference: {fileID: 0}
     - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf5366146dd414943b3cce2f6fa39042, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3071df737cb734eb39f671cf55fabe2f, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: <Symbol>k__BackingField
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b059bf9b6842d426583cbd56ebf329a6, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7381,22 +7157,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackpot
       objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: Symbol
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: SharpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32ea17266d389492897027634fb6acdd, type: 3}
-    - target: {fileID: 8484684191450217817, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: BlurrySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 76a7c209550fa446b9adc61823dea736, type: 3}
-    - target: {fileID: 8484684191450217818, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 73609a9267b324011a9f82fe6051e1e8, type: 3}
     - target: {fileID: 8484684191450217819, guid: cf7f739dd80184c1bbd53d97c1a8aa73, type: 3}
       propertyPath: m_RootOrder
       value: 0

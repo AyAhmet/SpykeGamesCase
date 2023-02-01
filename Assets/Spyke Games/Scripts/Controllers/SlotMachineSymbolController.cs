@@ -1,47 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class SlotMachineSymbolController : MonoBehaviour
 {
     [field : SerializeField] public SlotMachineSymbols Symbol { get; private set; }
-    [SerializeField] private SpriteRenderer SpriteRenderer;
-    [SerializeField] private List<Sprite> SharpSprites;
-    [SerializeField] private List<Sprite> BlurrySprites;
-
+    [SerializeField] private SpriteRenderer m_SpriteRenderer; 
+    
     private Sprite m_SharpSprite;
     private Sprite m_BlurrySprite;
 
-    private void Awake()
+    #region Dependency Injection
+
+    public void SetSharpAndBlurrySprites(Sprite sharp, Sprite blurry)
     {
-        m_SharpSprite = SharpSprites[(int) Symbol];
-        m_BlurrySprite = BlurrySprites[(int) Symbol];
-    }
-
-
-    public void SetSharpSprite()
-    {
-        SpriteRenderer.sprite = m_SharpSprite;
-    }
-
-
-    public void SetBlurrySprite()
-    {
-        SpriteRenderer.sprite = m_BlurrySprite;
-    }
-    
-    
-#if UNITY_EDITOR
-
-    private void OnValidate()
-    {
-        if (Application.isPlaying) return;
+        m_SharpSprite = sharp;
+        m_BlurrySprite = blurry;
         
-        gameObject.name = Symbol.ToString();
-        SpriteRenderer.sprite = SharpSprites[(int) Symbol];
+        EnableSharpSprite();
     }
 
-#endif
+    #endregion
+    
+    public void EnableSharpSprite()
+    {
+        m_SpriteRenderer.sprite = m_SharpSprite;
+    }
+    
+    public void EnableBlurrySprite()
+    {
+        m_SpriteRenderer.sprite = m_BlurrySprite;
+    }
 }

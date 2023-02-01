@@ -45,6 +45,14 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin, ISpin
         m_SpinInitiator.OnSpinInitiated += Spin;
     }
 
+    public void SetSymbolSprites(List<Sprite> sharpSprites, List<Sprite> blurrySprites)
+    {
+        foreach (var columnController in m_ColumnControllers)
+        {
+            columnController.SetSymbolControllerSprites(sharpSprites, blurrySprites);
+        }
+    }
+
     #endregion
     
     private void Awake()
