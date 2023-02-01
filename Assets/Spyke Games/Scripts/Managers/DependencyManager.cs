@@ -5,9 +5,9 @@ public class DependencyManager : MonoBehaviour
     [Header("Controllers")]
     [SerializeField] private SlotMachineController SlotMachineController;
     [SerializeField] private CoinParticleController CoinParticleController;
+    [SerializeField] private SpinButtonController SpinButtonController;
     
     [Header("Slot Machine Controller Dependencies")]
-    [SerializeField] private SpinButtonController SpinInitiator;
     [SerializeField] private OutputsAndOddsTable SlotMachineOutputsAndOddsTable;
 
     private IPersistData PersistentDataManager;
@@ -30,6 +30,7 @@ public class DependencyManager : MonoBehaviour
     {
         InjectSlotMachineControllerDependencies();
         InjectCoinParticleControllerDependencies();
+        InjectSpinButtonControllerDependencies();
     }
 
 
@@ -54,12 +55,17 @@ public class DependencyManager : MonoBehaviour
 
         SlotMachineController.SetSlotMachine(slotMachine);
         SlotMachineController.SetOutputsAndOddsTable(SlotMachineOutputsAndOddsTable);
-        SlotMachineController.SetSpinInitiator(SpinInitiator);
+        SlotMachineController.SetSpinInitiator(SpinButtonController);
     }
 
     private void InjectCoinParticleControllerDependencies()
     {
         CoinParticleController.Subscribe(SlotMachineController);
+    }
+
+    private void InjectSpinButtonControllerDependencies()
+    {
+        SpinButtonController.SetEventReceiver(SlotMachineController);
     }
 
     #endregion

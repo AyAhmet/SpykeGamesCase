@@ -5,22 +5,26 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-public class SlotMachineController : MonoBehaviour, ICollectCoin
+public class SlotMachineController : MonoBehaviour, ICollectCoin, ISpin
 {
-    [SerializeField] private List<SlotMachineColumnController> ColumnControllers;
-    [SerializeField] private float SpinDuration;
-    [SerializeField] private float SpinSpeed;
-    [Range(0.1f,0.2f)][SerializeField] private float MinColumnSpinDelay;
-    [Range(0.1f,0.2f)][SerializeField] private float MaxColumnSpinDelay;
-    [SerializeField] private AnimationCurve LastColumnAnimationCurve;
+    [SerializeField] private List<SlotMachineColumnController> m_ColumnControllers;
+    [SerializeField] private float m_SpinDuration = 2;
+    [SerializeField] private float m_SpinSpeed = 100;
+    [Range(0.1f,0.2f)][SerializeField] private float m_MinColumnSpinDelay = 0.1f;
+    [Range(0.1f,0.2f)][SerializeField] private float m_MaxColumnSpinDelay = 0.2f;
+    [SerializeField] private AnimationCurve m_LastColumnAnimationCurve;
 
+    public event Action OnSpinStarted;
+    public event Action OnSpinEnded;
     public event Action<int> OnCoinCollected;
     
     private ISlotMachine m_SlotMachine;
     private IOutputsAndOdds m_OutputsAndOddsTable;
     private ISpinInitiator m_SpinInitiator;
-
+    
     private bool m_IsSpinning;
+
+    public bool IsSpinning() => m_IsSpinning;
 
 
     #region Dependency Injection
@@ -42,7 +46,7 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
     }
 
     #endregion
-
+    
     private void Awake()
     {
         InjectColumnConfigs();
@@ -50,13 +54,13 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
 
     private void InjectColumnConfigs()
     {
-        var spinDelay = Random.Range(MinColumnSpinDelay, MaxColumnSpinDelay);
+        var spinDelay = Random.Range(m_MinColumnSpinDelay, m_MaxColumnSpinDelay);
         
-        for (var i = 0; i < ColumnControllers.Count; i++)
+        for (var i = 0; i < m_ColumnControllers.Count; i++)
         {
-            var animCurve = (i + 1) == ColumnControllers.Count ? LastColumnAnimationCurve : null;
-            var config = new ColumnConfig(i, SpinDuration, SpinSpeed, spinDelay * i, animCurve);
-            ColumnControllers[i].SetConfig(config);
+            var animCurve = (i + 1) == m_ColumnControllers.Count ? m_LastColumnAnimationCurve : null;
+            var config = new ColumnConfig(i, m_SpinDuration, m_SpinSpeed, spinDelay * i, animCurve);
+            m_ColumnControllers[i].SetConfig(config);
         }
     }
 
@@ -64,6 +68,7 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
     {
         if (m_IsSpinning) return;
         m_IsSpinning = true;
+        OnSpinStarted?.Invoke();
 
         var rowIndex = m_SlotMachine.GetNextRowIndex();
 
@@ -104,7 +109,7 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
 
     private bool IsAnyColumnRolling()
     {
-        foreach (var columnController in ColumnControllers)
+        foreach (var columnController in m_ColumnControllers)
         {
             if (columnController.IsRolling)
                 return true;
@@ -121,7 +126,7 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
         for (var i = 0; i < symbolSequence.Length; i++)
         {
             var stopAnimation = (i + 1) == symbolSequence.Length ? lastColumnStopAnimation : SpinStopAnimation.Fast;
-            ColumnControllers[i].Spin(symbolSequence[i], stopAnimation);
+            m_ColumnControllers[i].Spin(symbolSequence[i], stopAnimation);
         }
 
         do
@@ -130,6 +135,7 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
         } while (IsAnyColumnRolling());
 
         m_IsSpinning = false;
+        OnSpinEnded?.Invoke();
     }
 
 
@@ -138,8 +144,8 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin
     {
         if (Application.isPlaying) return;
 
-        MinColumnSpinDelay = Mathf.Min(MinColumnSpinDelay, MaxColumnSpinDelay);
-        MaxColumnSpinDelay = Mathf.Max(MinColumnSpinDelay, MaxColumnSpinDelay);
+        m_MinColumnSpinDelay = Mathf.Min(m_MinColumnSpinDelay, m_MaxColumnSpinDelay);
+        m_MaxColumnSpinDelay = Mathf.Max(m_MinColumnSpinDelay, m_MaxColumnSpinDelay);
     }
 #endif
 }
