@@ -67,7 +67,7 @@ public class SlotMachineController : MonoBehaviour, ICollectCoin, ISpin
         for (var i = 0; i < m_ColumnControllers.Count; i++)
         {
             var animCurve = (i + 1) == m_ColumnControllers.Count ? m_LastColumnAnimationCurve : null;
-            var config = new ColumnConfig(i, m_SpinDuration, m_SpinSpeed, spinDelay * i, animCurve);
+            var config = new ColumnConfig(m_SpinDuration, m_SpinSpeed, spinDelay * i, animCurve);
             m_ColumnControllers[i].SetConfig(config);
         }
     }
