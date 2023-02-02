@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Random = UnityEngine.Random;
 
 public class PeriodicChanceDistributor : ChanceDistributor
 {
@@ -30,12 +29,13 @@ public class PeriodicChanceDistributor : ChanceDistributor
         var occurrenceRatios = new float[keyCount];
         var probabilityArr = GetProbabilityArray();
 
+        var rand = new System.Random();
         for (var i = 0; i < m_OutputArray.Length; i++)
         {
             var randKeyIndex = 0;
-            
+
             do {
-                randKeyIndex = Random.Range(0, keyCount);
+                randKeyIndex = rand.Next(0, keyCount);
             } while (occurrenceRatios[randKeyIndex] > probabilityArr[randKeyIndex]);
 
             m_OutputArray[i] = randKeyIndex;
