@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
-using Spyke.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Spyke.Scripts.Modules.ChanceDistributor
 {
-    public class PeriodicChanceDistributor : global::Spyke.Scripts.Modules.ChanceDistributor.ChanceDistributor
+    public class PeriodicChanceDistributor : ChanceDistributor
     {
         private readonly Dictionary<int, int> m_ChanceTable;
         private readonly int[] m_OutputArray;
 
     
-        public PeriodicChanceDistributor(IOutputsAndOdds outputsAndOdds)
+        public PeriodicChanceDistributor(Dictionary<int, int> chanceTable)
         {
-            m_ChanceTable = outputsAndOdds.GetOutputsAndOddsAsDictionary();
-            m_OutputArray = new int[outputsAndOdds.GetTotalOutputCount()];
+            m_ChanceTable = chanceTable;
+            m_OutputArray = new int[chanceTable.Values.Sum()];
         }
 
 
@@ -26,8 +26,7 @@ namespace Spyke.Scripts.Modules.ChanceDistributor
 
         private void GenerateNewOutputs()
         {
-            var keys = m_ChanceTable.Keys.ToList();
-            var keyCount = keys.Count;
+            var keyCount = m_ChanceTable.Keys.Count;
             var occurrenceCounts = new int[keyCount];
             var occurrenceRatios = new float[keyCount];
             var probabilityArr = GetProbabilityArray();
@@ -35,19 +34,52 @@ namespace Spyke.Scripts.Modules.ChanceDistributor
             var rand = new System.Random();
             for (var i = 0; i < m_OutputArray.Length; i++)
             {
-                var randKeyIndex = 0;
+                var selectedKey = 0;
+                var priorityKey = GetPriorityKeyIndex(i, probabilityArr, occurrenceCounts);
 
-                do {
-                    randKeyIndex = rand.Next(0, keyCount);
-                } while (occurrenceRatios[randKeyIndex] > probabilityArr[randKeyIndex]);
+                if (priorityKey != -1)
+                    selectedKey = priorityKey;
+                else
+                {
+                    var possibleSelections = GetPossibleSelections(probabilityArr, occurrenceRatios);
+                    selectedKey = possibleSelections[rand.Next(0, possibleSelections.Count)];
+                }
+                
+                m_OutputArray[i] = selectedKey;
 
-                m_OutputArray[i] = randKeyIndex;
-
-                occurrenceCounts[randKeyIndex]++;
+                occurrenceCounts[selectedKey]++;
                 UpdateOccurrenceRatios(occurrenceRatios, occurrenceCounts);
             }
         }
 
+        private int GetPriorityKeyIndex(int selectionIndex, float[] probabilityArr, int[] occurrenceCounts)
+        {
+            if (selectionIndex == m_OutputArray.Length - 1) return -1;
+            
+            for (var i = 0; i < probabilityArr.Length; i++)
+            {
+                if ((float) (occurrenceCounts[i] + 1) / (selectionIndex + 2) < probabilityArr[i])
+                {
+                    return i;
+                } 
+            }
+
+            return -1;
+        }
+
+        private List<int> GetPossibleSelections(float[] probabilityArr, float[] occurrenceRatios)
+        {
+            var possibleSelections = new List<int>();
+            for (var i = 0; i < probabilityArr.Length; i++)
+            {
+                if (occurrenceRatios[i] <= probabilityArr[i])
+                {
+                    possibleSelections.Add(i);
+                }
+            }
+
+            return possibleSelections;
+        }
 
         private void UpdateOccurrenceRatios(float[] occurrenceRatios, int[] occurrenceCounts)
         {
@@ -58,17 +90,14 @@ namespace Spyke.Scripts.Modules.ChanceDistributor
                 occurrenceRatios[i] = occurrenceCounts[i] / total;
             }
         }
-
-
+        
         private float[] GetProbabilityArray()
         {
-            var keys = m_ChanceTable.Keys.ToList();
-            var keyCount = keys.Count;
-            var probabilityArr = new float[keyCount];
+            var probabilityArr = new float[m_ChanceTable.Keys.Count];
 
-            for (var i = 0; i < keyCount; i++)
+            foreach (var pair in m_ChanceTable)
             {
-                probabilityArr[i] = (float) m_ChanceTable[keys[i]] / m_OutputArray.Length;
+                probabilityArr[pair.Key] = (float) pair.Value / m_OutputArray.Length;
             }
 
             return probabilityArr;

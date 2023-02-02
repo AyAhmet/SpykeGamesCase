@@ -63,7 +63,7 @@ namespace Spyke.Scripts.Managers
         {
             if (m_SlotMachineController == null) return;
          
-            IOutputChance chanceOutputter = new PeriodicChanceDistributor(m_SlotMachineOutputsAndOddsTable);
+            IOutputChance chanceOutputter = new PeriodicChanceDistributor(m_SlotMachineOutputsAndOddsTable.GetOutputsAndOddsAsDictionary());
             ISlotMachine slotMachine = new SlotMachine(chanceOutputter, PersistentDataManager);
  
             m_SlotMachineController.SetSlotMachine(slotMachine);
