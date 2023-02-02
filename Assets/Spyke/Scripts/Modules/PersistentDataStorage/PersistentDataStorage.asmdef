@@ -1,0 +1,16 @@
+{
+    "name": "PersistentDataStorage",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4268ff1c5d31d4bca90eb2664f626a13"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
