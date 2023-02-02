@@ -17,6 +17,7 @@ Shader "Custom/ShineUnlitSprite"
         _ShineThickness ("Shine Thickness", Range(0, 1)) = 0.25
         _ShineDelay ("Shine Delay", Range(0, 10)) = 2
         _ShineSpeed ("Shine Speed", Range(0, 10)) = 0.5
+        _ShineRotation ("Shine Rotation", Range(0, 360)) = 0
     }
 
     SubShader
@@ -61,13 +62,15 @@ Shader "Custom/ShineUnlitSprite"
                 float2 texcoord : TEXCOORD0;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
+
             UNITY_INSTANCING_BUFFER_START(Shine)
-                UNITY_DEFINE_INSTANCED_PROP(bool, _Shine)
-                UNITY_DEFINE_INSTANCED_PROP(fixed4, _ShineColor)
-                UNITY_DEFINE_INSTANCED_PROP(float, _ShineThickness)
-                UNITY_DEFINE_INSTANCED_PROP(float, _ShineSmoothness)
-                UNITY_DEFINE_INSTANCED_PROP(float, _ShineDelay)
-                UNITY_DEFINE_INSTANCED_PROP(float, _ShineSpeed)
+            UNITY_DEFINE_INSTANCED_PROP(bool, _Shine)
+            UNITY_DEFINE_INSTANCED_PROP(fixed4, _ShineColor)
+            UNITY_DEFINE_INSTANCED_PROP(float, _ShineThickness)
+            UNITY_DEFINE_INSTANCED_PROP(float, _ShineSmoothness)
+            UNITY_DEFINE_INSTANCED_PROP(float, _ShineDelay)
+            UNITY_DEFINE_INSTANCED_PROP(float, _ShineSpeed)
+            UNITY_DEFINE_INSTANCED_PROP(float, _ShineRotation)
             UNITY_INSTANCING_BUFFER_END(Shine)
 
             inline float inv_lerp(float from, float to, float value)
@@ -100,6 +103,14 @@ Shader "Custom/ShineUnlitSprite"
                 return o;
             }
 
+            float2 rotateUV(float2 uv, float rotation, float2 mid)
+            {
+                return float2(
+                    cos(rotation) * (uv.x - mid.x) + sin(rotation) * (uv.y - mid.y) + mid.x,
+                    cos(rotation) * (uv.y - mid.y) - sin(rotation) * (uv.x - mid.x) + mid.y
+                );
+            }
+
             fixed4 frag(frag_input IN) : SV_Target
             {
                 // Fuat hocam tamamen elle yazilmistir :))
@@ -109,15 +120,15 @@ Shader "Custom/ShineUnlitSprite"
                 c.rgb *= c.a;
 
                 bool _shine = UNITY_ACCESS_INSTANCED_PROP(Shine, _Shine);
-                
+
                 if (_shine == false)
                     return c;
 
-                fixed4 _shineColor = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineColor);
                 float _shineDelay = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineDelay);
-                float _shineSmoothness = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineSmoothness);
-                float _shineThickness = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineThickness);
                 float _shineSpeed = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineSpeed);
+                float _shineRotation = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineRotation) * UNITY_PI / 180;
+
+                IN.texcoord.xy = rotateUV(IN.texcoord.xy, -_shineRotation, float2(0.5, 0.5));
 
                 float time = _Time[1];
                 float shine_duration = 1 / _shineSpeed;
@@ -125,6 +136,10 @@ Shader "Custom/ShineUnlitSprite"
                 float t = time % (_shineDelay + shine_duration);
                 if (t > shine_duration)
                     return c;
+
+                fixed4 _shineColor = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineColor);
+                float _shineSmoothness = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineSmoothness);
+                float _shineThickness = UNITY_ACCESS_INSTANCED_PROP(Shine, _ShineThickness);
 
                 t *= _shineSpeed;
                 t = remap(0, 1, -_shineThickness, 1 + _shineThickness, t);

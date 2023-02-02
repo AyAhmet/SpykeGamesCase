@@ -82,6 +82,7 @@ Material:
     - _ShineDuration: 2
     - _ShineFreq: 1
     - _ShineFrequency: 2
+    - _ShineRotation: 0
     - _ShineSmoothness: 0.209
     - _ShineSpeed: 1.01
     - _ShineThickness: 0.229
